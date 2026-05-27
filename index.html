@@ -15,7 +15,7 @@ body {
     color: #111;
 }
 
-/* 🌈 LIGHT POSITIVE BACKGROUND */
+/* 🌈 LIGHT BACKGROUND */
 .bg {
     position: fixed;
     inset: 0;
@@ -35,7 +35,7 @@ body {
     align-items: center;
 }
 
-/* INFO BOX */
+/* CARD */
 .card {
     width: 560px;
     padding: 28px;
@@ -59,7 +59,7 @@ body {
     border-radius: 6px;
 }
 
-/* START */
+/* START SCREEN */
 #overlay {
     position: fixed;
     inset: 0;
@@ -134,7 +134,7 @@ body {
     50% { transform: translateY(-12px); }
 }
 
-/* many amogus */
+/* positions */
 .a1{top:5%;left:5%}
 .a2{top:10%;left:20%}
 .a3{top:15%;left:40%}
@@ -210,21 +210,20 @@ document.body.addEventListener("click", function () {
     started = true;
 
     document.getElementById("musicFrame").src =
-    "https://www.youtube.com/embed/Wgw6tJ8yz9M?autoplay=1&start=28&loop=1&playlist=Wgw6tJ8yz9M";
+    "https://www.youtube.com/embed/El0Z5Q-PWnU?autoplay=1&start=28&loop=1&playlist=El0Z5Q-PWnU";
 
     document.getElementById("overlay").style.display = "none";
 });
 
-/* 😂 JOKES */
+/* jokes */
 function showJoke() {
     const jokes = [
-        "Amogus detected in the vents 👀",
-        "John Pork called… he wants his pig back 🐷",
-        "You are the impostor (probably not)",
-        "Emergency meeting but nobody knows why",
-        "This OS is powered by pure confusion"
+        "Amogus detected in vents 👀",
+        "John Pork is calling 📞🐷",
+        "Emergency meeting started for no reason",
+        "You are the impostor (or not)",
+        "This OS runs on chaos energy"
     ];
-
     alert(jokes[Math.floor(Math.random() * jokes.length)]);
 }
 
