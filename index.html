@@ -1,140 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>VIHAAN OS</title>
 
 <style>
-body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    font-family: Arial;
-    cursor: pointer;
-    color: #111;
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    box-sizing:border-box;
 }
 
-/* 🌈 LIGHT BACKGROUND */
-.bg {
-    position: fixed;
-    inset: 0;
+body{
+    margin:0;
+    min-height:100svh;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+    cursor:pointer;
+    color:#111;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.bg{
+    position:fixed;
+    inset:0;
+
     background:
         radial-gradient(circle at 20% 20%, #b3f5ff, transparent 45%),
         radial-gradient(circle at 80% 20%, #ffd6f3, transparent 45%),
         radial-gradient(circle at 50% 80%, #d6ffe0, transparent 50%),
         linear-gradient(120deg, #fdfbff, #eefcff);
+
+    z-index:-1;
 }
 
-/* MAIN */
-#main {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* =========================
+   MAIN
+========================= */
+
+#main{
+    position:relative;
+    min-height:100svh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
 }
 
-/* CARD */
-.card {
-    width: 560px;
-    padding: 28px;
-    border-radius: 22px;
-    background: rgba(255,255,255,0.78);
-    backdrop-filter: blur(16px);
-    border: 2px solid rgba(0,180,255,0.2);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    z-index: 5;
+/* =========================
+   CARD
+========================= */
+
+.card{
+    width:min(560px, 92vw);
+
+    padding:28px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,0.78);
+
+    backdrop-filter:blur(16px);
+
+    border:2px solid rgba(0,180,255,0.2);
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    z-index:5;
 }
 
-.card h2 {
-    color: #0099ff;
+.card h2{
+    color:#0099ff;
+    margin-top:0;
 }
 
-.card p {
-    margin: 8px 0;
-    padding: 6px 10px;
-    background: rgba(0,0,0,0.04);
-    border-left: 4px solid #00c2ff;
-    border-radius: 6px;
+.card p{
+    margin:8px 0;
+
+    padding:8px 10px;
+
+    background:rgba(0,0,0,0.04);
+
+    border-left:4px solid #00c2ff;
+
+    border-radius:6px;
+
+    line-height:1.4;
 }
 
-/* START SCREEN */
-#overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(255,255,255,0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    color: #0077aa;
-    z-index: 10;
-    text-align: center;
+/* =========================
+   START OVERLAY
+========================= */
+
+#overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(255,255,255,0.85);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    font-size:20px;
+
+    color:#0077aa;
+
+    z-index:100;
+
+    padding:20px;
 }
 
-/* MUSIC */
-#musicFrame {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
+/* =========================
+   MUSIC
+========================= */
+
+#musicFrame{
+    position:absolute;
+    width:1px;
+    height:1px;
+    opacity:0;
+    pointer-events:none;
 }
 
-/* 😂 JOKE BUTTON */
-#jokeBtn {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 16px;
-    background: #00c2ff;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 20;
+/* =========================
+   JOKE BUTTON
+========================= */
+
+#jokeBtn{
+    position:fixed;
+
+    top:15px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:14px 20px;
+
+    background:#00c2ff;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    z-index:50;
+
+    box-shadow:0 6px 16px rgba(0,0,0,0.12);
+
+    transition:0.2s;
 }
 
-/* 👾 AMOGUS */
-.amogus {
-    position: absolute;
-    width: 55px;
-    height: 75px;
-    border-radius: 28px;
-    background: red;
-    animation: float 3s infinite ease-in-out;
+#jokeBtn:hover{
+    transform:translateX(-50%) scale(1.05);
 }
 
-.amogus::before {
-    content: "";
-    position: absolute;
-    top: 16px;
-    left: 8px;
-    width: 38px;
-    height: 20px;
-    background: #bfe9ff;
-    border-radius: 10px;
+/* =========================
+   AMOGUS
+========================= */
+
+.amogus{
+    position:absolute;
+
+    width:55px;
+    height:75px;
+
+    border-radius:28px;
+
+    background:red;
+
+    animation:float 3s infinite ease-in-out;
 }
 
-.amogus::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 6px;
-    width: 42px;
-    height: 14px;
-    background: #222;
-    border-radius: 8px;
+.amogus::before{
+    content:"";
+
+    position:absolute;
+
+    top:16px;
+    left:8px;
+
+    width:38px;
+    height:20px;
+
+    background:#bfe9ff;
+
+    border-radius:10px;
 }
 
-@keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+.amogus::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-8px;
+    left:6px;
+
+    width:42px;
+    height:14px;
+
+    background:#222;
+
+    border-radius:8px;
 }
 
-/* positions */
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* =========================
+   POSITIONS
+========================= */
+
 .a1{top:5%;left:5%}
 .a2{top:10%;left:20%}
 .a3{top:15%;left:40%}
@@ -146,15 +248,61 @@ body {
 .a9{bottom:12%;left:75%}
 .a10{top:45%;left:2%}
 
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:600px){
+
+    body{
+        overflow:auto;
+    }
+
+    .card{
+        width:100%;
+        padding:18px;
+        border-radius:18px;
+    }
+
+    .card h2{
+        font-size:20px;
+    }
+
+    .card p{
+        font-size:14px;
+    }
+
+    #jokeBtn{
+        font-size:15px;
+        padding:12px 16px;
+    }
+
+    .amogus{
+        transform:scale(0.8);
+    }
+
+    /* hide extra amogus on phones */
+    .a4,
+    .a5,
+    .a8,
+    .a9,
+    .a10{
+        display:none;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND -->
 <div class="bg"></div>
 
 <!-- JOKE BUTTON -->
-<button id="jokeBtn" onclick="showJoke()">😂 Secret Jokes</button>
+<button id="jokeBtn" onclick="showJoke()">
+😂 Secret Jokes
+</button>
 
 <!-- AMOGUS -->
 <div class="amogus a1"></div>
@@ -168,45 +316,64 @@ body {
 <div class="amogus a9"></div>
 <div class="amogus a10"></div>
 
-<!-- START -->
+<!-- START SCREEN -->
 <div id="overlay">
-CLICK ANYWHERE TO START VIHAAN OS
+    CLICK ANYWHERE TO START VIHAAN OS
 </div>
 
 <!-- MUSIC -->
-<iframe id="musicFrame" allow="autoplay"></iframe>
+<iframe
+    id="musicFrame"
+    allow="autoplay"
+></iframe>
 
 <!-- MAIN -->
 <div id="main">
 
-<div class="card">
+    <div class="card">
 
-<h2>ABOUT VIHAAN</h2>
-<p>Football enthusiast • System glitch • Gaming entity</p>
+        <h2>ABOUT VIHAAN</h2>
 
-<hr>
+        <p>
+            Football enthusiast • System glitch • Gaming entity
+        </p>
 
-<h2>VIHAAN PROFILE DATA</h2>
+        <hr>
 
-<p><b>Fav food:</b> Water 💧</p>
-<p><b>Fav drink:</b> Water 💧</p>
-<p><b>Fav gas:</b> Carbon Dioxide</p>
-<p><b>Fav electric thing:</b> Electricity itself ⚡</p>
-<p><b>Fav animal:</b> White pigeon 🕊️</p>
-<p><b>Fav game:</b> Minecraft ⛏️</p>
-<p><b>Sport:</b> Football chaos mode</p>
-<p><b>Status:</b> doing anything that keeps me alive</p>
+        <h2>VIHAAN PROFILE DATA</h2>
 
-</div>
+        <p><b>Fav food:</b> Water 💧</p>
+
+        <p><b>Fav drink:</b> Water 💧</p>
+
+        <p><b>Fav gas:</b> Carbon Dioxide</p>
+
+        <p><b>Fav electric thing:</b> Electricity itself ⚡</p>
+
+        <p><b>Fav animal:</b> White pigeon 🕊️</p>
+
+        <p><b>Fav game:</b> Minecraft ⛏️</p>
+
+        <p><b>Sport:</b> Football chaos mode</p>
+
+        <p><b>Status:</b> doing anything that keeps me alive</p>
+
+    </div>
 
 </div>
 
 <script>
 
+/* =========================
+   START MUSIC
+========================= */
+
 let started = false;
 
 document.body.addEventListener("click", function () {
-    if (started) return;
+
+    if(started) return;
+
     started = true;
 
     document.getElementById("musicFrame").src =
@@ -215,17 +382,31 @@ document.body.addEventListener("click", function () {
     document.getElementById("overlay").style.display = "none";
 });
 
-/* jokes */
-function showJoke() {
+/* =========================
+   JOKES
+========================= */
+
+function showJoke(){
+
     const jokes = [
+
         "Amogus detected in vents 👀",
+
         "John Pork is calling 📞🐷",
+
         "Emergency meeting started for no reason",
+
         "You are the impostor (or not)",
-        "This OS runs on chaos energy"
+
+        "This OS runs on chaos energy",
+
         "Why did the math book look so sad? Because it had too many problems."
+
     ];
-    alert(jokes[Math.floor(Math.random() * jokes.length)]);
+
+    alert(
+        jokes[Math.floor(Math.random() * jokes.length)]
+    );
 }
 
 </script>
